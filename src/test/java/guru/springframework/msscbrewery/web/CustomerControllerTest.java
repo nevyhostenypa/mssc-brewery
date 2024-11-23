@@ -86,6 +86,20 @@ public class CustomerControllerTest {
 
     }
     @Test
+    public void updateWithBadNameField2() throws Exception {
+        CustomerDto customerDto = CustomerDto.builder().id(UUID.randomUUID()).name("Mr.").build();
+        String customerDtoJson = objectMapper.writeValueAsString(customerDto);
+
+        mockMvc.perform(put("/api/v1/customer/" + UUID.randomUUID())
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(customerDtoJson))
+                .andExpect(status().isNoContent());
+
+        then(customerService).shouldHaveNoInteractions();
+
+    }
+
+    @Test
     public void handleUpdateBadNameField() throws Exception {
         CustomerDto customerDto = CustomerDto.builder().id(UUID.randomUUID()).name("Mr.").build();
         String customerDtoJson = objectMapper.writeValueAsString(customerDto);
