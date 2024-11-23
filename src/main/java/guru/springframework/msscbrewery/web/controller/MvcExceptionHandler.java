@@ -18,7 +18,7 @@ public class MvcExceptionHandler {
         e.getConstraintViolations().forEach(constraintViolation ->
                 errors.add(constraintViolation.getPropertyPath() + " : " + constraintViolation.getMessage())
         );
-        return new ResponseEntity(errors, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
     }
 
 }
