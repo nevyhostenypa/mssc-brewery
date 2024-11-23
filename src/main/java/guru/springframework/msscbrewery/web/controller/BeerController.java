@@ -25,7 +25,10 @@ public class BeerController {
     @GetMapping({"/{beerId}"})
     public ResponseEntity<BeerDto> getBeer(@PathVariable("beerId") UUID beerId){
 
-        return new ResponseEntity<>(beerService.getBeerById(beerId), HttpStatus.OK);
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-type","application/json;charset=UTF-8");
+
+        return new ResponseEntity<>(beerService.getBeerById(beerId), headers, HttpStatus.OK);
     }
     @PostMapping({"/"})// POST - create new beer
     public ResponseEntity handlePost(@RequestBody BeerDto beerDto){
@@ -34,6 +37,8 @@ public class BeerController {
         HttpHeaders headers = new HttpHeaders();
         //todo add hostname to url
         headers.add("Location", "/api/v1/beer/" + savedDto.getId().toString());
+
+
 
         return new ResponseEntity(headers, HttpStatus.CREATED);
     }
