@@ -13,4 +13,7 @@ public class MsscBreweryApplicationTests {
 	public void contextLoads() {
 	}
 
+	@Test
+	public void handlePut() {}
+
 }
