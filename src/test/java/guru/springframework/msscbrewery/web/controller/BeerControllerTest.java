@@ -1,7 +1,6 @@
-package guru.springframework.msscbrewery.web;
+package guru.springframework.msscbrewery.web.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import guru.springframework.msscbrewery.web.controller.BeerController;
 import guru.springframework.msscbrewery.services.BeerService;
 import guru.springframework.msscbrewery.web.model.BeerDto;
 import org.junit.Before;
